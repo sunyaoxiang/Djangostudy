@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+{% if question %}
+    {{ question }}
+<table border = 1>
+    <td><a>投票项</a></td>
+    <td><a>选项</a></td>
+    <td><a>得票数</a></td>
+        {% for choice in question.choice_set.all %}
+            <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+            <tr>
+                <td><a>{{  question.question_text }}</a></td>
+                <td><a>{{ choice.choice_text }}</a></td>
+                <td><a>{{ choice.votes }}</a></td>
+            </tr>
+        {% endfor %}
+</table>
+{% endif %}
+{% if question %}
+{#    <a href="{% url 'polls:detail'   question.0.id %}" >{{ question.0.question_text }} : 信息 {{question.0.id}}</a>#}
+    <a href="{% url 'polls:detail'   question.id %}" >返回-{{ question.question_text }}-投票页面</a>
+{% endif %}
+</body>
+</html>

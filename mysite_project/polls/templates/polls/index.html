@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+{% if latest_question_list %}
+    <table border = 1 width = 400>
+    {% for question in latest_question_list %}
+        <tr>
+        <!--<td><a href="/polls/{{ question.id }}/">{{ question.question_text }} : 信息</a></td>-->
+        <td><a href="{% url 'polls:detail'   question.id %}">{{ question.question_text }} : 信息</a></td>
+{#        <td><a href="/polls/{{ question.id }}/results/">{{ question.question_text }} : 结果</a></td>#}
+        <td><a href="{% url 'polls:results'   question.id %}">{{ question.question_text }} : 结果</a></td>
+        <td><a href="{% url 'polls:vote'   question.id %}">{{ question.question_text }} : 投票</a></td>
+        </tr>
+    {% endfor %}
+    </table>
+{% else %}
+    <p>No Polls are available.</p>
+{% endif %}
+
+
+{% if request_txt %}
+<a>{{ request_txt }}</a>
+{% endif %}
+</body>
+</html>
