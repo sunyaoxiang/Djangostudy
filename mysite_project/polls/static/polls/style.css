@@ -1,0 +1,11 @@
+li a {
+    color: red;
+}
+
+td a {
+    color: green;
+}
+
+body {
+    background : #95ff9f url("images/background.gif") no-repeat right bottom;
+}
